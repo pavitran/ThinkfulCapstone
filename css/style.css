@@ -1,7 +1,17 @@
+@font-face {
+    font-family: pacifico;
+    src: url(Pacifico.ttf);
+}
 body{
 	background-color: #BDFFBA;
 	text-align: center;
 	font-family: sans-serif;
+}
+h1{
+	font-family: pacifico;
+	color: #CFC291;
+	font-size: 36pt;
+	-webkit-text-stroke: 1px black;
 }
 .info{
 	position: absolute;
@@ -23,13 +33,6 @@ input {
 	-moz-border-radius: 4px;
 	border-radius: 4px;
 }
-/*input.button {
-	background-color: #1F253D;
-	color: #95a5a6;
-	font-size: 2em;
-	padding: 0.2em;
-	margin-bottom: 20px;
-}*/
 .btn {
 	width: auto;
 	height: auto;
@@ -118,60 +121,7 @@ input:focus {
 	height: 100%;
 	width: 100%;
 	border-radius: 25px;
-	/*top: 15%;*/
 	margin: auto auto;
-	/*border: 1px solid rgba(0,0,0,0.1);*/
-}
-
-.content h3 {
-	margin: 0;
-	padding: 0.4em;
-	/*text-align: center;*/
-	font-size: 2.4em;
-	font-weight: 300;
-	opacity: 0.8;
-	background: rgba(0,0,0,0.1);
-	border-radius: 3px 3px 0 0;
-}
-
-.content > div {
-	padding: 15px 40px 30px;
-	margin: 0;
-	font-weight: 300;
-	font-size: 1.15em;
-}
-
-.content > div p {
-	margin: 0;
-	padding: 10px 0;
-	line-height: 2em;
-	text-align: justify;
-}
-
-.content > div ul {
-	margin-bottom: -30px;
-	padding: 0 0 30px 20px;
-	text-align: left;
-}
-
-.content > div ul li {
-	padding: 5px 0;
-	display: block;	
-	list-style-type: disc;
-	line-height: 1.5em;
-}
-
-.content > div ul li strong{
-	text-decoration: underline;
-}
-
-.content > div a {
-	font-size: 0.8em;
-	background: #1F253D;
-	color: #95a5a6;
-	padding: 0.5em 2em;
-	margin-bottom: 50px;
-	border-radius: 3px;
 }
 /*style for hidden modal*/
 .form{
@@ -179,9 +129,7 @@ input:focus {
 	width: 400px;
 	margin-left: auto;
 	margin-right: auto;
-	/*text-align: center;*/
 	border: 2px solid #B243FF;
-	/*border-radius: 15px;*/
 	border-style: outset;
 }
 div.browse-wrap {
@@ -231,7 +179,32 @@ table th:last-child {
 .ubutton{
 	margin-top: 20px;
 }
+.rotator{
+	right: 0;
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    left: 0;
+}
+.content li{
+	text-align: left;
+	margin-top: 10px;
+}
 /* mobile */
+@media only screen and (max-width: 775px) {
+	h1{
+		font-size: 20pt;
+		padding: 0;
+	}
+	th{
+		font-family: 'Oswald', sans-serif;
+		font-size: 15px;
+		border-right: 1px solid #000;
+		padding-left: 3px;
+		padding-right: 3px;
+	}
+ 	
+}
 @media only screen and (max-width: 400px) {
  	.overlay {
 		width: 100%;
@@ -252,4 +225,11 @@ table th:last-child {
 		width: 90%;
 		height: auto;
 	}
+	th{
+	font-family: 'Oswald', sans-serif;
+	font-size: 10px;
+	border-right: 1px solid #000;
+	padding-left: 1px;
+	padding-right: 1px;
+}
 }

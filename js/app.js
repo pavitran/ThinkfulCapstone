@@ -21,23 +21,16 @@ $(function(){
     });
     console.log($(window).width());
     if ($(window).width() < 600) {
-		console.log("apple");
-		var $rotator = $(".rotator");
-		$rotator.find("img:gt(0)").hide();
-		setTimeout(Rotate, 1000);
-		function Rotate() {
-	      var $current = $rotator.find("img:visible");
-	      var $next = $current.next();
-	      if ($next.length == 0) $next = $rotator.find("img:eq(0)");
-	      $current.hide();
-	      $next.show();
-	      setTimeout(Rotate, 1000);
-		}
+		$(".rotator").empty();
+		$(".rotator").append("<img width=\"150px\" src=\"https://staticdelivery.nexusmods.com/mods/110/images/74627-0-1459502036.jpg\"/>")
     }
     $(document).on('click', '#try', function () {
       	$('.upload').val("");
 		$('input.text').val("");    
-  		$(".overlay").fadeOut(1000);
+  		$(".overlay").fadeOut(300);
+	});
+	$(document).on('click', '.info', function () {    
+  		infooverlay();
 	});
 });
 
@@ -70,16 +63,16 @@ var getData = function(image,query) {
 				$('table').append("<tr><th>GENDER</th><th>PROBABILITY</th><th>AGE(min/max)</th><th>PROBABILITY</th></tr>")
 				$.each(result.images[0].faces, function(i, item) {
 					$('table').append("<tr><td>"+ item.gender.gender +"</td><td>"+(item.gender.score*100).toFixed(2)+"%</td><td>"+item.age.min+ "-"+item.age.max+ "</td><td>"+ (item.age.score*100).toFixed(2) + "</td><tr>");
-					$('.content').append("<span>might be:</span><span>" + item.identity.name+ "</span><span>"+(item.identity.score*100).toFixed(2)+"</span>");
+					$('.content').append("<div><span>might be:</span><span style=\"margin:8px;font-family:Georgia Bold;\">" + item.identity.name+ "</span><span>"+(item.identity.score*100).toFixed(2)+"%</span></div>");
 
 				});
 			} else {
 				$('.content').append("<h1>NO Faces Found</h1>");
 			}
 		}
-		var btn_clone = $('.ubutton').clone().insertAfter("table").prop('id', 'try' );
+		var btn_clone = $('.ubutton').clone().appendTo('.content').insertAfter("table").prop('id', 'try' );
 		$('#try').show();
-		$('.content').append(btn_clone);
+		//$().append(btn_clone);
 	})
 	.fail(function(jqXHR, error){ //this waits for the ajax to return with an error promise object
 		$('.content').append(error);
@@ -88,3 +81,22 @@ var getData = function(image,query) {
 function checkURL(url) {
 	    return(url.match(/\.(jpeg|jpg|png)$/) != null);
 }
+function infooverlay() {
+	$('.content').empty();
+	img = "<img onclick=\"getData(this.src,'classify')\" width=\"150px\" src=\"https://staticdelivery.nexusmods.com/mods/110/images/74627-0-1459502036.jpg\"/>";
+	if ($(window).width() > 600) {
+		img += "<img onclick=\"getData(this.src,'classify')\" width=\"150px\" src=\"http://r.ddmcdn.com/s_f/o_1/cx_633/cy_0/cw_1725/ch_1725/w_720/APL/uploads/2014/11/too-cute-doggone-it-video-playlist.jpg\"/>";
+		img += "<img onclick=\"getData(this.src,'detect_faces')\" width=\"150px\" src=\"http://a4.files.biography.com/image/upload/c_fill,cs_srgb,dpr_1.0,g_face,h_300,q_80,w_300/MTE4MDAzNDEwMDU4NTc3NDIy.jpg\"/>";
+	}
+	$('.content').append("<h1>What's In The Image</h1>");
+	$('.content').append("<h3>What?</h3>")
+	$('.content').append("<ul style=\"display:inline-block;\"><li>This app lets you recognize items and objects in an Image.</li><li>It also let's you detect faces,estimated age and gender of the person.</li><li>It can also guess names of some of the famous personalities.</li></ul>");
+	$('.content').append("<h3>How?</h3>")
+	$('.content').append("<ul style=\"display:inline-block;\"><li>Upload image of your own or paste image link from web to try it.</li><li>check if you want to detect a face or classify the image.</li><li>Click on image below to see how it works!</li></ul>");
+	$('.content').append("<div class=\"rotator\" style=\"display: none;\">"+img+"</div>");
+	$('.rotator').show();
+	$(".overlay").fadeIn(1000);
+}
+window.onload=function() { 
+   infooverlay();
+};
