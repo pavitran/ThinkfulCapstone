@@ -3,7 +3,9 @@
 <head>
 	<title>Image And Face Recognition App(Thinkful Capstone Project)</title>
 	<meta charset="utf-8" name="description" content="Image And Face Recognition App for Thinkful Capstone Project">
+	<link rel="stylesheet" type="text/css" href="css/squares.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 	<script src="https://www.gstatic.com/firebasejs/3.5.3/firebase.js"></script>
 	<script>
 	  // Initialize Firebase
@@ -33,15 +35,34 @@
 	  var storageRef = storage.ref();
 	  var imagesRef = storageRef.child('thinkful');
 	</script>
+	<button class="info"><i class="fa fa-info-circle fa-5x" aria-hidden="true"></i></button>
+	<div class="rotator">
+		<img width="150px" src="https://staticdelivery.nexusmods.com/mods/110/images/74627-0-1459502036.jpg"/>
+		<img width="150px" src="http://r.ddmcdn.com/s_f/o_1/cx_633/cy_0/cw_1725/ch_1725/w_720/APL/uploads/2014/11/too-cute-doggone-it-video-playlist.jpg"/>
+		<img width="150px" src="http://a4.files.biography.com/image/upload/c_fill,cs_srgb,dpr_1.0,g_face,h_300,q_80,w_300/MTE4MDAzNDEwMDU4NTc3NDIy.jpg"/>
+	</div>
+	<div class="form">
+	<div class="browse-wrap">
+	    <div class="title">Upload Image of your own</div>
+	    <input type="file" id="file" name="file" accept="image/*" class="upload" />
+	</div>
+		<p style="margin-left: auto;margin-right: auto;">or</p>
 	<form id="search">
-		<label for="img">Image URL</label><input type="text" name="pic" id="img"><br>
-		<input type="radio" name="query" value="classify" checked>Classify Image<br>
-  		<input type="radio" name="query" value="detect_faces">Detect Faces<br>
-  		<input type="submit">
+		<input type="text" name="pic" id="img" placeholder="Paste image URL from Web" class="text" required><br>
+		<div style="width: 200px;margin: auto;text-align: left;">
+		<input type="radio" name="query" value="classify" checked><label for="radio1">Classify Image</label><br>
+  		<input type="radio" name="query" value="detect_faces"><label for="radio2">Detect Faces</label>
+  		</div>
+  		<input type="submit" class="btn" value="Find Out!">
 	</form>
-	<h6>Choose Image of your own(jpg/png)</h6>
-    <input type="file" id="file" name="file" accept="image/*"/>
-	<div class="results"></div>
+    </div>
+				<!-- Modal Information Box -->
+	<div class="overlay" id="modal">
+		<div class="content">
+		</div>
+	</div>
+	<div class='uil-squares-css' style='transform:scale(0.6);display: none;margin: auto;'><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div></div>
+	<button class="btn ubutton" style="display: none;outline:none;">Try Again!</button>
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script src="js/firebase.js"></script>
 	<script src="js/app.js"></script>
