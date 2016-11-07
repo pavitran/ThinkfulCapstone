@@ -11,12 +11,12 @@ $(function(){
     }
   });
   $(document).ajaxStart(function () {
-  		var $button = $('.uil-squares-css').clone();
+  		var $button = $('.uil-squares-css').clone().prop('id', 'loading' );
   		$('.content').html($button);
-  		$(".uil-squares-css").show();
+  		$("#loading").show();
         $(".overlay").fadeIn(100);
     }).ajaxStop(function () {
-        $(".uil-squares-css").hide();
+        $("#loading").hide();
         $('.results').show();
     });
     console.log($(window).width());
