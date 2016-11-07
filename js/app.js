@@ -20,9 +20,12 @@ $(function(){
         $('.results').show();
     });
     console.log($(window).width());
-    if ($(window).width() < 600) {
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+    	console.log("Appl");
 		$(".rotator").empty();
-		$(".rotator").append("<img width=\"150px\" src=\"https://staticdelivery.nexusmods.com/mods/110/images/74627-0-1459502036.jpg\"/>")
+		$(".rotator").append("<img width=\"150px\" src=\"https://staticdelivery.nexusmods.com/mods/110/images/74627-0-1459502036.jpg\"/>");
+		$(".form").css({'width' : 'auto','height' : 'auto','display':'inline-block'});
+
     }
     $(document).on('click', '#try', function () {
       	$('.upload').val("");
@@ -31,6 +34,9 @@ $(function(){
 	});
 	$(document).on('click', '.info', function () {    
   		infooverlay();
+	});
+	$(document).on('click', '.cancel-button', function () {    
+  		$(".overlay").fadeOut(300);
 	});
 });
 
@@ -83,6 +89,7 @@ function checkURL(url) {
 }
 function infooverlay() {
 	$('.content').empty();
+	$('.content').append("<button class=\"cancel-button\"><i class=\"fa fa-times fa-3x\" aria-hidden=\"true\"></i></button>");
 	img = "<img onclick=\"getData(this.src,'classify')\" width=\"150px\" src=\"https://staticdelivery.nexusmods.com/mods/110/images/74627-0-1459502036.jpg\"/>";
 	if ($(window).width() > 600) {
 		img += "<img onclick=\"getData(this.src,'classify')\" width=\"150px\" src=\"http://r.ddmcdn.com/s_f/o_1/cx_633/cy_0/cw_1725/ch_1725/w_720/APL/uploads/2014/11/too-cute-doggone-it-video-playlist.jpg\"/>";
