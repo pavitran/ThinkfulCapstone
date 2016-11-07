@@ -68,7 +68,7 @@ var getData = function(image,query) {
 			if (result.images[0].faces.length > 0) {
 				$('table').append("<tr><th>GENDER</th><th>PROBABILITY</th><th>AGE(min/max)</th><th>PROBABILITY</th></tr>")
 				$.each(result.images[0].faces, function(i, item) {
-					$('table').append("<tr><td>"+ item.gender.gender +"</td><td>"+(item.gender.score*100).toFixed(2)+"%</td><td>"+item.age.min+ "-"+item.age.max+ "</td><td>"+ (item.age.score*100).toFixed(2) + "</td><tr>");
+					$('table').append("<tr><td>"+ item.gender.gender +"</td><td>"+(item.gender.score*100).toFixed(2)+"%</td><td>"+item.age.min+ "-"+item.age.max+ "</td><td>"+ (item.age.score*100).toFixed(2) + "%</td><tr>");
 					$('.content').append("<div><span>might be:</span><span style=\"margin:8px;font-family:Georgia Bold;\">" + item.identity.name+ "</span><span>"+(item.identity.score*100).toFixed(2)+"%</span></div>");
 
 				});
