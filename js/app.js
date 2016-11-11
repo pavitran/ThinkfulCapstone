@@ -104,6 +104,3 @@ function infooverlay() {
 	$('.rotator').show();
 	$(".overlay").fadeIn(1000);
 }
-window.onload=function() { 
-   infooverlay();
-};
