@@ -32,6 +32,7 @@ var auth = firebase.auth();
     }
 
     window.onload = function() {
+        infooverlay();
       var query= $('input[name=query]:checked', '#search').val();
       $('#search input').on('change', function() {
          query = $('input[name=query]:checked', '#search').val(); 
