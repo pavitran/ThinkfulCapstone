@@ -45,7 +45,7 @@ var getData = function(image,query) {
 	// the parameters we need to pass in our request to IBM Watson™ Visual Recognition service"faces"
 	var request = { 
 		url: image,
-		api_key: '84923a713de2b16e6e72a4bb707eae8dd8dd208d',
+		api_key: 'b10ee4271b0b5e47351acaf010863567ceefcb91',
 		version: '2016-05-19'
 	};
 	
